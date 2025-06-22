@@ -8,9 +8,9 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: your_database_name
-      MYSQL_USER: your_username
-      MYSQL_PASSWORD: your_password
+      MYSQL_DATABASE: courses_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Sakshi@2004
     ports:
       - "3306:3306"
     volumes:
@@ -25,13 +25,13 @@ services:
   # Backend Service
   backend:
     # Replace with your DockerHub username
-    image: your-dockerhub-username/backend-app:latest
+    image: saksy20/backend-app:latest
     container_name: spring-backend
     restart: unless-stopped
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/your_database_name
-      SPRING_DATASOURCE_USERNAME: your_username
-      SPRING_DATASOURCE_PASSWORD: your_password
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/courses_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Sakshi@2004
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
       - "8080:8080"
@@ -44,7 +44,7 @@ services:
   # Frontend Service
   frontend:
     # Replace with your DockerHub username
-    image: your-dockerhub-username/frontend-app:latest
+    image: saksy20/frontend-app:latest
     container_name: react-frontend
     restart: unless-stopped
     ports:
